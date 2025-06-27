@@ -19,7 +19,8 @@ class StudentInfoModel:
     def load_data(self, filepath):
         """Load and preprocess the data from JSON file"""
         with open(filepath, 'r', encoding='utf-8') as f:
-            data = [json.loads(line) for line in f]
+            # Only include non-empty lines
+            data = [json.loads(line) for line in f if line.strip()]
         
         X = []
         y_intent = []
@@ -62,10 +63,15 @@ class StudentInfoModel:
                 entities['class'] = class_match.group(1) or class_match.group(2)
 
         elif intent == 'get_all_pending_fess':
-            # Better regex: only 'fess' must appear as a standalone word
             if re.search(r'\bfess\b', text_lower):
                 entities['fess'] = 'fess'
         
+        elif intent == 'get_pending_fess_by_class':
+            class_match = re.search(r'class\s*(\d+)', text_lower)
+            if class_match:
+                entities['class'] = class_match.group(1)
+                entities['fess'] = 'fess'
+
         return entities
     
     def predict(self, text):
@@ -121,10 +127,11 @@ if __name__ == "__main__":
         "fess kis kis ki baki hai",
         "Emma Anderson ka data dikhao",
         "Class 5 ke students ki list do",
-        "fess pending kis ki hai"
+        "fess pending kis ki hai",
+        "class 12 me kis ki fess baki hai",
+        "class 4 me abhi tak kiski fess pending hai"
     ]
     
     for text in test_inputs:
         output = student_model.predict(text)
-        print(f"\033[94m[OUTPUT]\033[0m {output}")
-
+        print(f"\033[94m[OUTPUT]\033[0m  {output}")

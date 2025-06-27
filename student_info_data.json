@@ -71,3 +71,21 @@
 {"prompt": "fess kaun kaun se students ne nahi diya hai", "completion": "{\"intent\": \"get_all_pending_fess\", \"fess\": \"fess\"}"}
 {"prompt": "kis kis ki fess abhi due hai", "completion": "{\"intent\": \"get_all_pending_fess\", \"fess\": \"fess\"}"}
 {"prompt": "abhi tak kis student ki fess due hai", "completion": "{\"intent\": \"get_all_pending_fess\", \"fess\": \"fess\"}"}
+{"prompt": "class 12 me kis ki fess baki hai", "completion": "{\"intent\": \"get_pending_fess_by_class\", \"class\": \"12\"}"}
+{"prompt": "class 8 ke students ki fess pending hai kya", "completion": "{\"intent\": \"get_pending_fess_by_class\", \"class\": \"8\"}"}
+{"prompt": "class 10 me kis kis ki fess due hai", "completion": "{\"intent\": \"get_pending_fess_by_class\", \"class\": \"10\"}"}
+{"prompt": "class 5 ke students ka fess status do", "completion": "{\"intent\": \"get_pending_fess_by_class\", \"class\": \"5\"}"}
+{"prompt": "class 3 me fess kis kis ki pending hai", "completion": "{\"intent\": \"get_pending_fess_by_class\", \"class\": \"3\"}"}
+{"prompt": "class 6 me abhi tak kiski fess nahi aayi", "completion": "{\"intent\": \"get_pending_fess_by_class\", \"class\": \"6\"}"}
+{"prompt": "class 11 ke fess due students ka list do", "completion": "{\"intent\": \"get_pending_fess_by_class\", \"class\": \"11\"}"}
+{"prompt": "class 4 me fess due kis kis ki hai", "completion": "{\"intent\": \"get_pending_fess_by_class\", \"class\": \"4\"}"}
+{"prompt": "class 9 ke students me kin ki fess baki hai", "completion": "{\"intent\": \"get_pending_fess_by_class\", \"class\": \"9\"}"}
+{"prompt": "class 7 me kis student ki fess due hai", "completion": "{\"intent\": \"get_pending_fess_by_class\", \"class\": \"7\"}"}
+{"prompt": "class 1 ke students me fess kis kis ne nahi diya", "completion": "{\"intent\": \"get_pending_fess_by_class\", \"class\": \"1\"}"}
+{"prompt": "class 2 ke students me kis kis ka fess baaki hai", "completion": "{\"intent\": \"get_pending_fess_by_class\", \"class\": \"2\"}"}
+{"prompt": "class 12 ke students me kaun fess nahi diya", "completion": "{\"intent\": \"get_pending_fess_by_class\", \"class\": \"12\"}"}
+{"prompt": "class 6 ke students me fess due hai kya", "completion": "{\"intent\": \"get_pending_fess_by_class\", \"class\": \"6\"}"}
+{"prompt": "class 8 me abhi fess kis kis ki baaki hai", "completion": "{\"intent\": \"get_pending_fess_by_class\", \"class\": \"8\"}"}
+{"prompt": "class 10 ke students ki fess pending list chahiye", "completion": "{\"intent\": \"get_pending_fess_by_class\", \"class\": \"10\"}"}
+
+
