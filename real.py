@@ -1,12 +1,27 @@
 import json
 import re
 import joblib
+import os
+import spacy
+from langdetect import detect
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
 from sklearn.pipeline import Pipeline
-import os
+
+# Load fine-tuned spaCy NER model
+nlp = spacy.load("student_ner_model")
+
+# List of offensive words (extendable)
+offensive_keywords = {"idiot", "stupid", "nonsense", "chutiya"}
+
+# Common typo corrections
+typo_corrections = {
+    "fass": "fess",
+    "fees": "fess",
+    "fee": "fess"
+}
 
 class StudentInfoModel:
     def __init__(self):
@@ -53,32 +68,34 @@ class StudentInfoModel:
         """Train the intent classification model"""
         self.model.fit(X, y)
 
+    def autocorrect_text(self, text):
+        for wrong, right in typo_corrections.items():
+            text = re.sub(rf"\b{wrong}\b", right, text, flags=re.IGNORECASE)
+        return text
+
+    def detect_offensive(self, text):
+        for word in offensive_keywords:
+            if word in text.lower():
+                return True
+        return False
+
+    def detect_language(self, text):
+        try:
+            return detect(text)
+        except:
+            return "unknown"
+
     def extract_entities(self, text, intent):
-        """Rule-based entity extraction"""
+        """ML-based entity extraction using fine-tuned spaCy"""
         entities = {}
-        text_lower = text.lower()
+        doc = nlp(text)
 
-        if intent == 'get_student_info':
-            name_match = re.search(
-                r'\b([a-z]+)(?:\s+[a-z]+)*\s+(data|details|info|information|chahiye|dikhao|batao|record|profile)\b',
-                text_lower
-            )
-            if name_match:
-                entities['name'] = name_match.group(1).lower()
-
-        elif intent == 'get_Students_by_class':
-            class_match = re.search(r'class\s*(\d+)|(\d+)\s*class', text_lower)
-            if class_match:
-                entities['class'] = class_match.group(1) or class_match.group(2)
-
-        elif intent == 'get_all_pending_fess':
-            if re.search(r'\bfess\b', text_lower):
-                entities['fess'] = 'fess'
-
-        elif intent == 'get_pending_fess_by_class':
-            class_match = re.search(r'class\s*(\d+)', text_lower)
-            if class_match:
-                entities['class'] = class_match.group(1)
+        for ent in doc.ents:
+            if ent.label_ == "NAME":
+                entities['name'] = ent.text.lower()
+            elif ent.label_ == "CLASS":
+                entities['class'] = ent.text
+            elif ent.label_ == "FESS":
                 entities['fess'] = 'fess'
 
         return entities
@@ -86,6 +103,15 @@ class StudentInfoModel:
     def predict(self, text):
         """Make prediction for new text"""
         print(f"\n\033[94m[PREDICT]\033[0m Input: {text}")
+
+        if self.detect_offensive(text):
+            print("\033[91m[BLOCKED]\033[0m Offensive content detected.")
+            return {"error": "Offensive input"}
+
+        lang = self.detect_language(text)
+        print(f"\033[94m[LANGUAGE]\033[0m Detected language: {lang}")
+
+        text = self.autocorrect_text(text)
         intent = self.model.predict([text])[0]
 
         if intent not in self.valid_intents:
@@ -118,6 +144,21 @@ class StudentInfoModel:
         """Load a trained model from disk"""
         self.model = joblib.load(filepath)
 
+    def generate_training_data(self, base_prompts, names, classes):
+        """Generate new training data by combining phrases"""
+        new_data = []
+        for prompt in base_prompts:
+            for name in names:
+                new_data.append({
+                    "prompt": prompt.replace("<name>", name),
+                    "completion": json.dumps({"intent": "get_student_info", "name": name.lower()})
+                })
+            for cls in classes:
+                new_data.append({
+                    "prompt": prompt.replace("<class>", str(cls)),
+                    "completion": json.dumps({"intent": "get_Students_by_class", "class": str(cls)})
+                })
+        return new_data
 
 # Main execution
 if __name__ == "__main__":
@@ -145,14 +186,13 @@ if __name__ == "__main__":
 
     # Test predictions
     test_inputs = [
-      "fass kis kis ki baki hai",
+        "fass kis kis ki baki hai",
         "Emma Anderson ka data dikhao",
         "Class 5 ke students ki list do",
         "fess pending kis ki hai",
         "class 12 me kis ki fess baki hai",
-        "class 4 me abhi tak ki ki fess baki hai",
-        "Olivia Taylor ka data chahiyee",
-        "Amelia King ki student details"
+        "class 4 me abhi tak kiski fess pending hai",
+        "You are an idiot"
     ]
 
     for text in test_inputs:
