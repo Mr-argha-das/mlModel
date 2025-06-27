@@ -53,6 +53,21 @@
 {"prompt": "Mujhe class 8 ke students ka record chahiye", "completion": "{\"intent\": \"get_Students_by_class\", \"class\": \"8\"}"}
 {"prompt": "Class 10 ke enrolled students chahiye", "completion": "{\"intent\": \"get_Students_by_class\", \"class\": \"10\"}"}
 {"prompt": "Class 1 ke students ka pura list do", "completion": "{\"intent\": \"get_Students_by_class\", \"class\": \"1\"}"}
-{"prompt": "kin kin ki fess baki hai", "completion": "{\"intent\": \"get_all_pending_fess\"}"}
-{"prompt": "fess kis kis ki baki hai", "completion": "{\"intent\": \"get_all_pending_fess\"}"}
-{"prompt": "fess pending kis ki hai", "completion": "{\"intent\": \"get_all_pending_fess\"}"}
+{"prompt": "kin kin ki fess baki hai", "completion": "{\"intent\": \"get_all_pending_fess\", \"fess\": \"fess\"}"}
+{"prompt": "fess kis kis ki baki hai", "completion": "{\"intent\": \"get_all_pending_fess\", \"fess\": \"fess\"}"}
+{"prompt": "fess pending kis ki hai", "completion": "{\"intent\": \"get_all_pending_fess\", \"fess\": \"fess\"}"}
+{"prompt": "fess abhi tak kis kis ki pending hai", "completion": "{\"intent\": \"get_all_pending_fess\", \"fess\": \"fess\"}"}
+{"prompt": "pending fess wali list do", "completion": "{\"intent\": \"get_all_pending_fess\", \"fess\": \"fess\"}"}
+{"prompt": "kaun kaun fess nahi diya hai", "completion": "{\"intent\": \"get_all_pending_fess\", \"fess\": \"fess\"}"}
+{"prompt": "abhi tak kis ki fess due hai", "completion": "{\"intent\": \"get_all_pending_fess\", \"fess\": \"fess\"}"}
+{"prompt": "fess due students ki list chahiye", "completion": "{\"intent\": \"get_all_pending_fess\", \"fess\": \"fess\"}"}
+{"prompt": "kisko kisko fess bharna baaki hai", "completion": "{\"intent\": \"get_all_pending_fess\", \"fess\": \"fess\"}"}
+{"prompt": "un students ka data do jinki fess pending hai", "completion": "{\"intent\": \"get_all_pending_fess\", \"fess\": \"fess\"}"}
+{"prompt": "kis kis ne abhi tak fess nahi diya", "completion": "{\"intent\": \"get_all_pending_fess\", \"fess\": \"fess\"}"}
+{"prompt": "mujhe pending fess ka record chahiye", "completion": "{\"intent\": \"get_all_pending_fess\", \"fess\": \"fess\"}"}
+{"prompt": "pending fess kis kis ki hai", "completion": "{\"intent\": \"get_all_pending_fess\", \"fess\": \"fess\"}"}
+{"prompt": "abhi kis kis ki fess baaki hai", "completion": "{\"intent\": \"get_all_pending_fess\", \"fess\": \"fess\"}"}
+{"prompt": "fess dene wale students kaun kaun hai", "completion": "{\"intent\": \"get_all_pending_fess\", \"fess\": \"fess\"}"}
+{"prompt": "fess kaun kaun se students ne nahi diya hai", "completion": "{\"intent\": \"get_all_pending_fess\", \"fess\": \"fess\"}"}
+{"prompt": "kis kis ki fess abhi due hai", "completion": "{\"intent\": \"get_all_pending_fess\", \"fess\": \"fess\"}"}
+{"prompt": "abhi tak kis student ki fess due hai", "completion": "{\"intent\": \"get_all_pending_fess\", \"fess\": \"fess\"}"}
