@@ -1,0 +1,58 @@
+{"prompt": "Olivia Taylor ka data chahiye", "completion": "{\"intent\": \"get_student_info\", \"name\": \"olivia\"}"}
+{"prompt": "Liam Johnson ke baare mein batao", "completion": "{\"intent\": \"get_student_info\", \"name\": \"liam\"}"}
+{"prompt": "Sophia Martinez ki detail chahiye", "completion": "{\"intent\": \"get_student_info\", \"name\": \"sophia\"}"}
+{"prompt": "Noah Wilson ka student data chahiye", "completion": "{\"intent\": \"get_student_info\", \"name\": \"noah\"}"}
+{"prompt": "Emma Anderson ka data dikhao", "completion": "{\"intent\": \"get_student_info\", \"name\": \"emma\"}"}
+{"prompt": "Ava Thomas ki information chahiye", "completion": "{\"intent\": \"get_student_info\", \"name\": \"ava\"}"}
+{"prompt": "Lucas Brown ke student info chahiye", "completion": "{\"intent\": \"get_student_info\", \"name\": \"lucas\"}"}
+{"prompt": "Isabella White ka full record chahiye", "completion": "{\"intent\": \"get_student_info\", \"name\": \"isabella\"}"}
+{"prompt": "Mason Harris ke details kya hain", "completion": "{\"intent\": \"get_student_info\", \"name\": \"mason\"}"}
+{"prompt": "Mia Clark ka record dikhao", "completion": "{\"intent\": \"get_student_info\", \"name\": \"mia\"}"}
+{"prompt": "Ethan Lewis ke student details do", "completion": "{\"intent\": \"get_student_info\", \"name\": \"ethan\"}"}
+{"prompt": "Charlotte Walker ki profile chahiye", "completion": "{\"intent\": \"get_student_info\", \"name\": \"charlotte\"}"}
+{"prompt": "Alexander Young ka student data kya hai", "completion": "{\"intent\": \"get_student_info\", \"name\": \"alexander\"}"}
+{"prompt": "Amelia King ki student details", "completion": "{\"intent\": \"get_student_info\", \"name\": \"amelia\"}"}
+{"prompt": "James Adams ka student record", "completion": "{\"intent\": \"get_student_info\", \"name\": \"james\"}"}
+{"prompt": "Harper Scott ka profile dikhana", "completion": "{\"intent\": \"get_student_info\", \"name\": \"harper\"}"}
+{"prompt": "Benjamin Green ka data", "completion": "{\"intent\": \"get_student_info\", \"name\": \"benjamin\"}"}
+{"prompt": "Evelyn Hill ka student record chahiye", "completion": "{\"intent\": \"get_student_info\", \"name\": \"evelyn\"}"}
+{"prompt": "Abigail Baker ka student kaun sa hai", "completion": "{\"intent\": \"get_student_info\", \"name\": \"abigail\"}"}
+{"prompt": "Logan Rivera ke bare me data", "completion": "{\"intent\": \"get_student_info\", \"name\": \"logan\"}"}
+{"prompt": "Sofia Nelson ka data chahiye", "completion": "{\"intent\": \"get_student_info\", \"name\": \"sofia\"}"}
+{"prompt": "Jackson Carter ke baare mein batao", "completion": "{\"intent\": \"get_student_info\", \"name\": \"jackson\"}"}
+{"prompt": "Aria Mitchell ki detail chahiye", "completion": "{\"intent\": \"get_student_info\", \"name\": \"aria\"}"}
+{"prompt": "Aiden Perez ka student data chahiye", "completion": "{\"intent\": \"get_student_info\", \"name\": \"aiden\"}"}
+{"prompt": "Chloe Roberts ka data dikhao", "completion": "{\"intent\": \"get_student_info\", \"name\": \"chloe\"}"}
+{"prompt": "Henry Phillips ki information chahiye", "completion": "{\"intent\": \"get_student_info\", \"name\": \"henry\"}"}
+{"prompt": "Ella Turner ke student info chahiye", "completion": "{\"intent\": \"get_student_info\", \"name\": \"ella\"}"}
+{"prompt": "Sebastian Parker ka full record chahiye", "completion": "{\"intent\": \"get_student_info\", \"name\": \"sebastian\"}"}
+{"prompt": "Grace Evans ke details kya hain", "completion": "{\"intent\": \"get_student_info\", \"name\": \"grace\"}"}
+{"prompt": "David Brooks ka record dikhao", "completion": "{\"intent\": \"get_student_info\", \"name\": \"david\"}"}
+{"prompt": "Lily Morgan ke student details do", "completion": "{\"intent\": \"get_student_info\", \"name\": \"lily\"}"}
+{"prompt": "Gabriel Reed ki profile chahiye", "completion": "{\"intent\": \"get_student_info\", \"name\": \"gabriel\"}"}
+{"prompt": "Zoe Cook ka student data kya hai", "completion": "{\"intent\": \"get_student_info\", \"name\": \"zoe\"}"}
+{"prompt": "Julian Bell ki student details", "completion": "{\"intent\": \"get_student_info\", \"name\": \"julian\"}"}
+{"prompt": "Victoria Kelly ka student record", "completion": "{\"intent\": \"get_student_info\", \"name\": \"victoria\"}"}
+{"prompt": "Owen Bailey ka profile dikhana", "completion": "{\"intent\": \"get_student_info\", \"name\": \"owen\"}"}
+{"prompt": "Hannah Ward ka data", "completion": "{\"intent\": \"get_student_info\", \"name\": \"hannah\"}"}
+{"prompt": "Isaac Foster ka student record chahiye", "completion": "{\"intent\": \"get_student_info\", \"name\": \"isaac\"}"}
+{"prompt": "Lila Hughes ka student kaun sa hai", "completion": "{\"intent\": \"get_student_info\", \"name\": \"lila\"}"}
+{"prompt": "Caleb Price ke bare me data", "completion": "{\"intent\": \"get_student_info\", \"name\": \"caleb\"}"}
+{"prompt": "Class 10 ke students ka pura list do", "completion": "{\"intent\": \"get_Students_by_class\", \"class\": \"10\"}"}
+{"prompt": "Class 7 ke students ka pura list do", "completion": "{\"intent\": \"get_Students_by_class\", \"class\": \"7\"}"}
+{"prompt": "Class 1 ke enrolled students chahiye", "completion": "{\"intent\": \"get_Students_by_class\", \"class\": \"1\"}"}
+{"prompt": "Class 12 ke students ki list do", "completion": "{\"intent\": \"get_Students_by_class\", \"class\": \"12\"}"}
+{"prompt": "Class 5 ke students ka pura list do", "completion": "{\"intent\": \"get_Students_by_class\", \"class\": \"5\"}"}
+{"prompt": "Class 10 ke students ka list bhejo", "completion": "{\"intent\": \"get_Students_by_class\", \"class\": \"10\"}"}
+{"prompt": "Class 5 ke students ki list do", "completion": "{\"intent\": \"get_Students_by_class\", \"class\": \"5\"}"}
+{"prompt": "Mujhe class 3 ke students ka record chahiye", "completion": "{\"intent\": \"get_Students_by_class\", \"class\": \"3\"}"}
+{"prompt": "Mujhe class 5 ke students ka record chahiye", "completion": "{\"intent\": \"get_Students_by_class\", \"class\": \"5\"}"}
+{"prompt": "Mujhe class 6 ke students ka data chahiye", "completion": "{\"intent\": \"get_Students_by_class\", \"class\": \"6\"}"}
+{"prompt": "Class 3 ke students ki list do", "completion": "{\"intent\": \"get_Students_by_class\", \"class\": \"3\"}"}
+{"prompt": "Class 4 ke enrolled students chahiye", "completion": "{\"intent\": \"get_Students_by_class\", \"class\": \"4\"}"}
+{"prompt": "Mujhe class 8 ke students ka record chahiye", "completion": "{\"intent\": \"get_Students_by_class\", \"class\": \"8\"}"}
+{"prompt": "Class 10 ke enrolled students chahiye", "completion": "{\"intent\": \"get_Students_by_class\", \"class\": \"10\"}"}
+{"prompt": "Class 1 ke students ka pura list do", "completion": "{\"intent\": \"get_Students_by_class\", \"class\": \"1\"}"}
+{"prompt": "kin kin ki fess baki hai", "completion": "{\"intent\": \"get_all_pending_fess\"}"}
+{"prompt": "fess kis kis ki baki hai", "completion": "{\"intent\": \"get_all_pending_fess\"}"}
+{"prompt": "fess pending kis ki hai", "completion": "{\"intent\": \"get_all_pending_fess\"}"}
