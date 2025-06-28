@@ -12,7 +12,9 @@ test_prompts = [
         "class 12 me kis ki fess baki hai",
         "class 4 me abhi tak ki ki fess baki hai",
         "Olivia Taylor ka data chahiyee",
-        "Amelia King ki student details"
+        "Amelia King ki student details",
+        "chutiya hai",
+        "class 10 ke students ki fess pending list chahiye"
 ]
 
 # Run the model on each prompt

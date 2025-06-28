@@ -1,16 +1,29 @@
 import json
 import re
 import joblib
+import os
+import spacy
+from langdetect import detect
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
 from sklearn.pipeline import Pipeline
-import os
+
+# Load fine-tuned spaCy NER model
+nlp = spacy.load("student_ner_model")
+
+offensive_keywords = {"idiot", "stupid", "nonsense", "chutiya"}
+
+# Common typo corrections
+typo_corrections = {
+    "fass": "fess",
+    "fees": "fess",
+    "fee": "fess"
+}
 
 class StudentInfoModel:
     def __init__(self):
-        """Initialize the model with pipeline"""
         self.model = Pipeline([
             ('tfidf', TfidfVectorizer(analyzer='char', ngram_range=(2, 4))),
             ('clf', RandomForestClassifier(n_estimators=100, random_state=42))
@@ -20,20 +33,18 @@ class StudentInfoModel:
             'get_student_info',
             'get_Students_by_class',
             'get_all_pending_fess',
-            'get_pending_fess_by_class'
+            'get_pending_fess_by_class',
+            'get_section_by_class'
         }
 
     def load_data(self, filepath):
-        """Load and preprocess the data from JSON file"""
         if not os.path.exists(filepath):
             raise FileNotFoundError(f"File not found: {filepath}")
 
         with open(filepath, 'r', encoding='utf-8') as f:
             data = [json.loads(line) for line in f if line.strip()]
 
-        X = []
-        y_intent = []
-        y_entities = []
+        X, y_intent, y_entities = [], [], []
 
         for item in data:
             X.append(item['prompt'])
@@ -50,42 +61,56 @@ class StudentInfoModel:
         return X, y_intent, y_entities
 
     def train(self, X, y):
-        """Train the intent classification model"""
         self.model.fit(X, y)
 
+    def autocorrect_text(self, text):
+        for wrong, right in typo_corrections.items():
+            text = re.sub(rf"\\b{wrong}\\b", right, text, flags=re.IGNORECASE)
+        return text
+
+    def detect_offensive(self, text):
+        for word in offensive_keywords:
+            if word in text.lower():
+                return True
+        return False
+
+    def detect_language(self, text):
+        try:
+            return detect(text)
+        except:
+            return "unknown"
+
     def extract_entities(self, text, intent):
-        """Rule-based entity extraction"""
         entities = {}
-        text_lower = text.lower()
+        doc = nlp(text)
 
-        if intent == 'get_student_info':
-            name_match = re.search(
-                r'\b([a-z]+)(?:\s+[a-z]+)*\s+(data|details|info|information|chahiye|dikhao|batao|record|profile)\b',
-                text_lower
-            )
-            if name_match:
-                entities['name'] = name_match.group(1).lower()
-
-        elif intent == 'get_Students_by_class':
-            class_match = re.search(r'class\s*(\d+)|(\d+)\s*class', text_lower)
-            if class_match:
-                entities['class'] = class_match.group(1) or class_match.group(2)
-
-        elif intent == 'get_all_pending_fess':
-            if re.search(r'\bfess\b', text_lower):
+        for ent in doc.ents:
+            if ent.label_ == "NAME":
+                entities['name'] = ent.text.lower()
+            elif ent.label_ == "CLASS":
+                entities['class'] = ent.text
+            elif ent.label_ == "FESS":
                 entities['fess'] = 'fess'
 
-        elif intent == 'get_pending_fess_by_class':
-            class_match = re.search(r'class\s*(\d+)', text_lower)
-            if class_match:
-                entities['class'] = class_match.group(1)
-                entities['fess'] = 'fess'
+        # Heuristic fallback for get_section_by_class
+        if intent == 'get_section_by_class' and 'class' not in entities:
+            match = re.search(r'class\s*(\d+)', text.lower())
+            if match:
+                entities['class'] = match.group(1)
 
         return entities
 
     def predict(self, text):
-        """Make prediction for new text"""
         print(f"\n\033[94m[PREDICT]\033[0m Input: {text}")
+
+        if self.detect_offensive(text):
+            print("\033[91m[BLOCKED]\033[0m Offensive content detected.")
+            return {"error": "Offensive input"}
+
+        lang = self.detect_language(text)
+        print(f"\033[94m[LANGUAGE]\033[0m Detected language: {lang}")
+
+        text = self.autocorrect_text(text)
         intent = self.model.predict([text])[0]
 
         if intent not in self.valid_intents:
@@ -105,54 +130,55 @@ class StudentInfoModel:
         return result
 
     def evaluate(self, X_test, y_test):
-        """Evaluate model performance"""
         y_pred = self.model.predict(X_test)
         print("\n\033[94m[MODEL EVALUATION]\033[0m")
         print(classification_report(y_test, y_pred))
 
     def save_model(self, filepath):
-        """Save the trained model to disk"""
         joblib.dump(self.model, filepath)
 
     def load_model(self, filepath):
-        """Load a trained model from disk"""
         self.model = joblib.load(filepath)
 
+    def generate_training_data(self, base_prompts, names, classes):
+        new_data = []
+        for prompt in base_prompts:
+            for name in names:
+                new_data.append({
+                    "prompt": prompt.replace("<name>", name),
+                    "completion": json.dumps({"intent": "get_student_info", "name": name.lower()})
+                })
+            for cls in classes:
+                new_data.append({
+                    "prompt": prompt.replace("<class>", str(cls)),
+                    "completion": json.dumps({"intent": "get_Students_by_class", "class": str(cls)})
+                })
+        return new_data
 
-# Main execution
 if __name__ == "__main__":
-    DATA_FILE = 'student_info_data.json'
+    DATA_FILE = 'student_info_data.jsonl'
     MODEL_FILE = 'student_info_model2.pkl'
 
     student_model = StudentInfoModel()
 
-    # Load and prepare data
     X, y_intent, y_entities = student_model.load_data(DATA_FILE)
+    X_train, X_test, y_train, y_test = train_test_split(X, y_intent, test_size=0.2, random_state=42)
 
-    # Split data for evaluation
-    X_train, X_test, y_train, y_test = train_test_split(
-        X, y_intent, test_size=0.2, random_state=42
-    )
-
-    # Train the model
     student_model.train(X_train, y_train)
-
-    # Evaluate performance
     student_model.evaluate(X_test, y_test)
-
-    # Save the model
     student_model.save_model(MODEL_FILE)
 
-    # Test predictions
     test_inputs = [
-      "fass kis kis ki baki hai",
+        "fass kis kis ki baki hai",
         "Emma Anderson ka data dikhao",
         "Class 5 ke students ki list do",
         "fess pending kis ki hai",
         "class 12 me kis ki fess baki hai",
-        "class 4 me abhi tak ki ki fess baki hai",
-        "Olivia Taylor ka data chahiyee",
-        "Amelia King ki student details"
+        "class 4 me abhi tak kiski fess pending hai",
+        "You are an idiot",
+        "class 10 ke students ki fess pending list chahiye",
+        "class 4 me kitne sections hai",
+        "class 2 ke sections kya hai"
     ]
 
     for text in test_inputs:

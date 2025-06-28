@@ -192,7 +192,8 @@ if __name__ == "__main__":
         "fess pending kis ki hai",
         "class 12 me kis ki fess baki hai",
         "class 4 me abhi tak kiski fess pending hai",
-        "You are an idiot"
+        "You are an idiot",
+        "class 10 ke students ki fess pending list chahiye"
     ]
 
     for text in test_inputs:

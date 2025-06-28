@@ -87,5 +87,24 @@
 {"prompt": "class 6 ke students me fess due hai kya", "completion": "{\"intent\": \"get_pending_fess_by_class\", \"class\": \"6\"}"}
 {"prompt": "class 8 me abhi fess kis kis ki baaki hai", "completion": "{\"intent\": \"get_pending_fess_by_class\", \"class\": \"8\"}"}
 {"prompt": "class 10 ke students ki fess pending list chahiye", "completion": "{\"intent\": \"get_pending_fess_by_class\", \"class\": \"10\"}"}
-
-
+{"prompt": "class 4 me kitne sections hai", "completion": "{\"intent\": \"get_section_by_class\", \"class\": \"4\"}"}
+{"prompt": "class 1 me kitne sections hai", "completion": "{\"intent\": \"get_section_by_class\", \"class\": \"1\"}"}
+{"prompt": "class 2 ke sections kya hai", "completion": "{\"intent\": \"get_section_by_class\", \"class\": \"2\"}"}
+{"prompt": "class 3 me kon kon se sections hai", "completion": "{\"intent\": \"get_section_by_class\", \"class\": \"3\"}"}
+{"prompt": "4th class ke sections btao", "completion": "{\"intent\": \"get_section_by_class\", \"class\": \"4\"}"}
+{"prompt": "5th class me kitne sections hain", "completion": "{\"intent\": \"get_section_by_class\", \"class\": \"5\"}"}
+{"prompt": "class 6 ke sabhi sections dikhao", "completion": "{\"intent\": \"get_section_by_class\", \"class\": \"6\"}"}
+{"prompt": "7th class ke available sections kya hai", "completion": "{\"intent\": \"get_section_by_class\", \"class\": \"7\"}"}
+{"prompt": "section list for class 8", "completion": "{\"intent\": \"get_section_by_class\", \"class\": \"8\"}"}
+{"prompt": "9th class me total kitne sections hai", "completion": "{\"intent\": \"get_section_by_class\", \"class\": \"9\"}"}
+{"prompt": "class 10 ke sections kaun kaun se hai", "completion": "{\"intent\": \"get_section_by_class\", \"class\": \"10\"}"}
+{"prompt": "11th class me kaunse sections hai", "completion": "{\"intent\": \"get_section_by_class\", \"class\": \"11\"}"}
+{"prompt": "12th class me kitne section hai", "completion": "{\"intent\": \"get_section_by_class\", \"class\": \"12\"}"}
+{"prompt": "class 3 sections btao", "completion": "{\"intent\": \"get_section_by_class\", \"class\": \"3\"}"}
+{"prompt": "class 7 ke sections kya kya hai", "completion": "{\"intent\": \"get_section_by_class\", \"class\": \"7\"}"}
+{"prompt": "class 2 ke sare sections chahiye", "completion": "{\"intent\": \"get_section_by_class\", \"class\": \"2\"}"}
+{"prompt": "class 9 me total section kitne hai", "completion": "{\"intent\": \"get_section_by_class\", \"class\": \"9\"}"}
+{"prompt": "section list chahiye for class 5", "completion": "{\"intent\": \"get_section_by_class\", \"class\": \"5\"}"}
+{"prompt": "class 8 ke sections", "completion": "{\"intent\": \"get_section_by_class\", \"class\": \"8\"}"}
+{"prompt": "class 6 me kaunse sections hai", "completion": "{\"intent\": \"get_section_by_class\", \"class\": \"6\"}"}
+{"prompt": "class 10 ka section list do", "completion": "{\"intent\": \"get_section_by_class\", \"class\": \"10\"}"}
